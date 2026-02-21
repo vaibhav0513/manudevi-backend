@@ -6,6 +6,7 @@ const compression = require("compression");
 
 // Load environment variables
 dotenv.config();
+console.log("ALLOWED_ORIGINS env:", process.env.ALLOWED_ORIGINS);
 
 // Import configurations
 const connectDB = require("./config/database");
@@ -47,7 +48,11 @@ const corsOptions = {
   // ✅ CRITICAL: Expose custom headers to frontend
   exposedHeaders: ["X-OTP-Token", "X-Auth-Token"],
 };
+
+// app.options("*", cors(corsOptions)); 
 // app.use(cors(corsOptions));
+
+
 app.use(cors(corsOptions));
 
 // Compression Middleware
